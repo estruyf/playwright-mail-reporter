@@ -51,7 +51,8 @@ export const processResults = async (
     }
   }
 
-  const hasFailed = totalStatus.failed > 0;
+  const totalFailed = totalStatus.failed + totalStatus.timedOut;
+  const hasFailed = totalFailed > 0;
 
   if (!options.mailOnFailure && hasFailed) {
     console.log("Not sending email on failure");
