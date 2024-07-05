@@ -1,6 +1,6 @@
 {
   "name": "playwright-mail-reporter",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Mail reporter for Playwright powered by Resend",
   "main": "dist/index.js",
   "scripts": {
