@@ -23,8 +23,8 @@ export interface MailReporterOptions {
 class MailReporter implements Reporter {
   private suite: Suite | undefined;
 
-  constructor(
-    private options: MailReporterOptions = {
+  constructor(private options: MailReporterOptions) {
+    const defaultOptions: MailReporterOptions = {
       apiKey: undefined,
       from: undefined,
       to: undefined,
@@ -34,9 +34,9 @@ class MailReporter implements Reporter {
       mailOnFailure: true,
       showError: false,
       quiet: false,
-    }
-  ) {
-    console.log(`Using the Mail Reporter`);
+    };
+
+    this.options = { ...defaultOptions, ...options };
 
     // Set default options
     if (typeof options.mailOnSuccess === "undefined") {
@@ -46,6 +46,8 @@ class MailReporter implements Reporter {
     if (typeof options.mailOnFailure === "undefined") {
       this.options.mailOnFailure = true;
     }
+
+    console.log(`Using the Mail Reporter`);
 
     if (process.env.NODE_ENV === "development") {
       console.log(`Using development mode`);

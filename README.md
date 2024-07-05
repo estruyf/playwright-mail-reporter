@@ -55,4 +55,6 @@ The reporter supports the following configuration options:
 | `showError` | Show the error details in the email | `false` |
 | `quiet` | Do not show any output in the console | `false` |
 
+<br />
+
 [![Visitors](https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2Festruyf%2Fplaywright-mail-reporter&countColor=%23263759)](https://visitorbadge.io/status?path=https%3A%2F%2Fgithub.com%2Festruyf%2Fplaywright-mail-reporter)

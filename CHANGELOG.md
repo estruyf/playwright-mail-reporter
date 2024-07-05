@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.0.2]
+
+- Fix in the default options
+
 ## [0.0.1]
 
 - Initial release of the `playwright-mail-reporter`.

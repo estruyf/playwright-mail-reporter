@@ -19,9 +19,9 @@ const config: PlaywrightTestConfig<{}, {}> = {
       "./src/index.ts",
       {
         apiKey: process.env.API_KEY,
-        from: "Elio <mail@elio.dev>",
+        from: "Elio <no-reply@elio.dev>",
         to: ["Elio <eliostruyf@gmail.com>"],
-        subject: "Playwright Test Results",
+        subject: "E2E Test Results",
         mailOnSuccess: true,
         mailOnFailure: true,
         linkToResults: "https://github.com/estruyf/playwright-mail-reporter",
