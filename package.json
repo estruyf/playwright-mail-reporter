@@ -1,6 +1,6 @@
 {
   "name": "playwright-mail-reporter",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Mail reporter for Playwright which allows you to send the test results via email.",
   "main": "dist/index.js",
   "scripts": {
