@@ -1,6 +1,5 @@
 import { Suite } from "@playwright/test/reporter";
 import { MailReporterOptions } from "..";
-import { Resend } from "resend";
 import {
   getHtmlTable,
   getSummaryDetails,
@@ -10,12 +9,29 @@ import {
 } from ".";
 import { basename } from "path";
 import { styles } from "../constants";
+import nodemailer from "nodemailer";
 
 export const processResults = async (
   suite: Suite | undefined,
   options: MailReporterOptions
 ) => {
-  if (!options.from || !options.to || !options.apiKey) {
+  if (
+    !options.host ||
+    !options.port ||
+    !options.username ||
+    !options.password
+  ) {
+    console.error("Missing SMTP options");
+    return;
+  }
+
+  if (!options.from) {
+    console.error("Missing from email address");
+    return;
+  }
+
+  if (!options.to) {
+    console.error("Missing to email address");
     return;
   }
 
@@ -23,7 +39,15 @@ export const processResults = async (
     return;
   }
 
-  const resend = new Resend(options.apiKey);
+  const transporter = nodemailer.createTransport({
+    host: options.host,
+    secure: true,
+    port: options.port,
+    auth: {
+      user: options.username,
+      pass: options.password,
+    },
+  });
 
   const totalStatus = getTotalStatus(suite.suites);
   const summary = getSummaryDetails(suite);
@@ -54,19 +78,16 @@ export const processResults = async (
   const totalFailed = totalStatus.failed + totalStatus.timedOut;
   const hasFailed = totalFailed > 0;
 
-  if (!options.mailOnFailure && hasFailed) {
-    console.log("Not sending email on failure");
-    return;
-  }
-
   if (!options.mailOnSuccess && !hasFailed) {
     console.log("Not sending email on success");
     return;
   }
 
-  const { error } = await resend.emails.send({
+  const toFields = options.to.split(",").map((to) => to.trim());
+
+  const info = await transporter.sendMail({
     from: options.from,
-    to: [...options.to],
+    to: toFields.join(", "),
     subject: `${options.subject} - ${hasFailed ? "Failed" : "Success"}`,
     html: `<h2 style="${styles.heading2}">Summary</h2>
 ${summary}
@@ -82,7 +103,5 @@ ${
     `,
   });
 
-  if (error) {
-    return console.error({ error });
-  }
+  console.log(`Message sent: ${info.messageId}`);
 };

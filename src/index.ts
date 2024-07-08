@@ -9,12 +9,16 @@ import type {
 import { processResults } from "./utils";
 
 export interface MailReporterOptions {
-  apiKey: string | undefined;
+  // SMTP options
+  host?: string;
+  port?: number;
+  username?: string;
+  password?: string;
+  // Mail options
   from: string | undefined;
   to: string | undefined;
   subject: string;
   mailOnSuccess?: boolean;
-  mailOnFailure?: boolean;
   linkToResults?: string;
   showError?: boolean;
   quiet?: boolean;
@@ -25,13 +29,15 @@ class MailReporter implements Reporter {
 
   constructor(private options: MailReporterOptions) {
     const defaultOptions: MailReporterOptions = {
-      apiKey: undefined,
+      host: undefined,
+      port: undefined,
+      username: undefined,
+      password: undefined,
       from: undefined,
       to: undefined,
       subject: "Playwright Test Results",
       linkToResults: undefined,
       mailOnSuccess: true,
-      mailOnFailure: true,
       showError: false,
       quiet: false,
     };
@@ -43,10 +49,6 @@ class MailReporter implements Reporter {
       this.options.mailOnSuccess = true;
     }
 
-    if (typeof options.mailOnFailure === "undefined") {
-      this.options.mailOnFailure = true;
-    }
-
     console.log(`Using the Mail Reporter`);
 
     if (process.env.NODE_ENV === "development") {
@@ -54,7 +56,7 @@ class MailReporter implements Reporter {
 
       // Do not return the API key
       const clonedOptions = Object.assign({}, this.options);
-      clonedOptions.apiKey = clonedOptions.apiKey
+      clonedOptions.password = clonedOptions.password
         ? "**********"
         : "NOT DEFINED";
       console.log(`Options: ${JSON.stringify(clonedOptions, null, 2)}`);
