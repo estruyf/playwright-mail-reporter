@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.0.5]
+
+- Added type definition files for the reporter
+
 ## [0.0.4]
 
 - Implemented the reporter with `nodemailer` instead of `resend`. This allows you to use any SMTP server.
