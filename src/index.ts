@@ -22,6 +22,7 @@ export interface MailReporterOptions {
   linkToResults?: string;
   showError?: boolean;
   quiet?: boolean;
+  debug?: boolean;
 }
 
 class MailReporter implements Reporter {
@@ -40,6 +41,7 @@ class MailReporter implements Reporter {
       mailOnSuccess: true,
       showError: false,
       quiet: false,
+      debug: false,
     };
 
     this.options = { ...defaultOptions, ...options };
@@ -51,8 +53,8 @@ class MailReporter implements Reporter {
 
     console.log(`Using the Mail Reporter`);
 
-    if (process.env.NODE_ENV === "development") {
-      console.log(`Using development mode`);
+    if (process.env.NODE_ENV === "development" || this.options.debug) {
+      console.log(`Using debug mode`);
 
       // Do not return the API key
       const clonedOptions = Object.assign({}, this.options);
