@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.0.7]
+
+- Added `⏭️` icon for skipped tests
+- Added flaky test support
+
 ## [0.0.6]
 
 - Added `debug` option
