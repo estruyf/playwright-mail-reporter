@@ -93,10 +93,10 @@ export const getHtmlTable = async (
 
     if (showError) {
       const error = result?.error?.message || "";
+      const errorMarkup = convert.toHtml(error);
+      const cleanErrorMarkup = errorMarkup.replace(/style="[^"]*"/g, "");
       content.push(
-        `<td style="${styles.table.td} width:${restWidth}">${convert.toHtml(
-          error
-        )}</td>`
+        `<td style="${styles.table.td} width:${restWidth}">${cleanErrorMarkup}</td>`
       );
     }
     content.push(`</tr>`);

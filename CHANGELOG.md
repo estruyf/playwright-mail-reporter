@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.0.8]
+
+- [#1](https://github.com/estruyf/playwright-mail-reporter/issues/1): Remove style attributes from the error messages
+
 ## [0.0.7]
 
 - Added `⏭️` icon for skipped tests
