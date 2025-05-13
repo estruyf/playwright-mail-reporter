@@ -17,9 +17,7 @@ export const processResults = async (
 ) => {
   if (
     !options.host ||
-    !options.port ||
-    !options.username ||
-    !options.password
+    !options.port
   ) {
     console.error("Missing SMTP options");
     return;
@@ -41,7 +39,7 @@ export const processResults = async (
 
   const transporter = nodemailer.createTransport({
     host: options.host,
-    secure: true,
+    secure: options.secure,
     port: options.port,
     auth: {
       user: options.username,

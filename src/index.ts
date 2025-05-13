@@ -12,6 +12,7 @@ export interface MailReporterOptions {
   // SMTP options
   host?: string;
   port?: number;
+  secure?: boolean;
   username?: string;
   password?: string;
   // Mail options
@@ -32,6 +33,7 @@ class MailReporter implements Reporter {
     const defaultOptions: MailReporterOptions = {
       host: undefined,
       port: undefined,
+      secure: true,
       username: undefined,
       password: undefined,
       from: undefined,
