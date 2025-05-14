@@ -37,15 +37,27 @@ export const processResults = async (
     return;
   }
 
-  const transporter = nodemailer.createTransport({
-    host: options.host,
-    secure: options.secure,
-    port: options.port,
-    auth: {
-      user: options.username,
-      pass: options.password,
-    },
-  });
+  const transportOptions: {
+      host: string;
+      secure?: boolean;
+      port: number;
+      auth?: {
+          user: string;
+          pass: string;
+      };
+  } = {
+      host: options.host,
+      secure: options.secure,
+      port: options.port,
+  };
+  if (options.username && options.password) {
+      transportOptions.auth = {
+          user: options.username,
+          pass: options.password,
+      };
+  }
+
+  const transporter = nodemailer.createTransport(transportOptions);
 
   const totalStatus = getTotalStatus(suite.suites);
   const summary = getSummaryDetails(suite);
