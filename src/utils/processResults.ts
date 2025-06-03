@@ -40,6 +40,7 @@ export const processResults = async (
   const transportOptions: {
       host: string;
       secure?: boolean;
+      ignoreTLS: boolean;
       port: number;
       auth?: {
           user: string;
@@ -51,6 +52,7 @@ export const processResults = async (
   } = {
       host: options.host,
       secure: options.secure,
+      ignoreTLS: !options.secure,
       port: options.port,
       tls: {
         rejectUnauthorized: options.secure || true
