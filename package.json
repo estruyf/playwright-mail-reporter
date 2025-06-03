@@ -26,15 +26,15 @@
   "homepage": "https://github.com/estruyf/playwright-mail-reporter#readme",
   "dependencies": {
     "ansi-to-html": "^0.7.2",
-    "nodemailer": "^6.9.14"
+    "nodemailer": "^7.0.3"
   },
   "devDependencies": {
-    "@playwright/test": "^1.45.0",
-    "@tsconfig/recommended": "^1.0.7",
-    "@types/node": "^20.14.9",
-    "@types/nodemailer": "^6.4.15",
-    "dotenv": "^16.4.5",
-    "typescript": "^5.5.2"
+    "@playwright/test": "^1.52.0",
+    "@tsconfig/recommended": "^1.0.8",
+    "@types/node": "^22.15.29",
+    "@types/nodemailer": "^6.4.17",
+    "dotenv": "^16.5.0",
+    "typescript": "^5.8.3"
   },
   "peerDependencies": {
     "@playwright/test": "^1.45.0"
