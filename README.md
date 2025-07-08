@@ -28,23 +28,24 @@ npm install playwright-mail-reporter
 You can configure the reporter by adding it to the `playwright.config.js` file:
 
 ```javascript
-import { defineConfig } from '@playwright/test';
+import { defineConfig } from "@playwright/test";
 
 export default defineConfig({
   reporter: [
     [
-      'playwright-mail-reporter',
+      "playwright-mail-reporter",
       {
         host: "<host>",
         port: "<port>",
+        secure: "<boolean>", // Optional, defaults to true
         username: "<username>",
         password: "<password>",
         from: "<from>",
         to: "<to>", // Comma separated list of email addresses
         subject: "<subject>",
-        apiKey: "<api>"
-      }
-    ]
+        apiKey: "<api>",
+      },
+    ],
   ],
 });
 ```
@@ -52,21 +53,21 @@ export default defineConfig({
 Here is an example of how you can configure the reporter with Resend:
 
 ```javascript
-import { defineConfig } from '@playwright/test';
+import { defineConfig } from "@playwright/test";
 
 export default defineConfig({
   reporter: [
     [
-      'playwright-mail-reporter',
+      "playwright-mail-reporter",
       {
         host: "smtp.resend.com",
         port: 465,
         username: "resend",
         password: `<YOUR_API_KEY>`,
         from: "Elio <no-reply@elio.dev>",
-        to: "Elio <elio@struyfconsulting.be>"
-      }
-    ]
+        to: "Elio <elio@struyfconsulting.be>",
+      },
+    ],
   ],
 });
 ```
@@ -77,19 +78,19 @@ export default defineConfig({
 
 The reporter supports the following configuration options:
 
-| Option | Description | Required | Default |
-| --- | --- | --- | --- |
-| `host` | The SMTP server host | `true` | `undefined` |
-| `port` | The SMTP server port | `true` | `undefined` |
-| `username` | The SMTP server username | `true` | `undefined` |
-| `password` | The SMTP server password | `true` | `undefined` |
-| `from` | The email address from which the email will be sent | `true` | `undefined` |
-| `to` | The email addresses to which the email will be sent (comma separated) | `true` | `undefined` |
-| `subject` | The subject of the email | `false` | `Playwright Test Results` |
-| `linkToResults` | Link to the test results | `false` | `undefined` |
-| `mailOnSuccess` | Send the email on success | `false` | `true` |
-| `showError` | Show the error details in the email | `false` | `false` |
-| `quiet` | Do not show any output in the console | `false` | `false` |
+| Option          | Description                                                           | Required | Default                   |
+| --------------- | --------------------------------------------------------------------- | -------- | ------------------------- |
+| `host`          | The SMTP server host                                                  | `true`   | `undefined`               |
+| `port`          | The SMTP server port                                                  | `true`   | `undefined`               |
+| `username`      | The SMTP server username                                              | `true`   | `undefined`               |
+| `password`      | The SMTP server password                                              | `true`   | `undefined`               |
+| `from`          | The email address from which the email will be sent                   | `true`   | `undefined`               |
+| `to`            | The email addresses to which the email will be sent (comma separated) | `true`   | `undefined`               |
+| `subject`       | The subject of the email                                              | `false`  | `Playwright Test Results` |
+| `linkToResults` | Link to the test results                                              | `false`  | `undefined`               |
+| `mailOnSuccess` | Send the email on success                                             | `false`  | `true`                    |
+| `showError`     | Show the error details in the email                                   | `false`  | `false`                   |
+| `quiet`         | Do not show any output in the console                                 | `false`  | `false`                   |
 
 <br />
 
