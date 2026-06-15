@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.0.9]
+
+- [#4](https://github.com/estruyf/playwright-mail-reporter/pull/4): Improved TLS handling — `ignoreTLS` is now set automatically based on the `secure` option, and `rejectUnauthorized` is configured accordingly, fixing connectivity issues with SMTP servers that use non-standard or self-signed certificates
+- Upgraded `nodemailer` from v6 to v7
+
 ## [0.0.8]
 
 - [#1](https://github.com/estruyf/playwright-mail-reporter/issues/1): Remove style attributes from the error messages
