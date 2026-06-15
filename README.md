@@ -84,6 +84,7 @@ The reporter supports the following configuration options:
 | `port`          | The SMTP server port                                                  | `true`   | `undefined`               |
 | `username`      | The SMTP server username                                              | `true`   | `undefined`               |
 | `password`      | The SMTP server password                                              | `true`   | `undefined`               |
+| `secure`        | Use SSL/TLS for the SMTP connection. When `false`, the connection uses STARTTLS or plain SMTP and TLS certificate verification is skipped | `false`  | `true`                    |
 | `from`          | The email address from which the email will be sent                   | `true`   | `undefined`               |
 | `to`            | The email addresses to which the email will be sent (comma separated) | `true`   | `undefined`               |
 | `subject`       | The subject of the email                                              | `false`  | `Playwright Test Results` |
