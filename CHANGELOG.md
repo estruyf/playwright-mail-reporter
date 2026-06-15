@@ -1,11 +1,15 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
+All notable changes to this project will be documented in this file.\
+
+## [0.0.10]
+
+- [#4](https://github.com/estruyf/playwright-mail-reporter/pull/4): Improved TLS handling — `ignoreTLS` is now set automatically based on the `secure` option, and `rejectUnauthorized` is configured accordingly, fixing connectivity issues with SMTP servers that use non-standard or self-signed certificates. Thanks to [Matteo Gazzetta](https://github.com/ElfoLiNk)
+- Upgraded `nodemailer` from v6 to v7
 
 ## [0.0.9]
 
-- [#4](https://github.com/estruyf/playwright-mail-reporter/pull/4): Improved TLS handling — `ignoreTLS` is now set automatically based on the `secure` option, and `rejectUnauthorized` is configured accordingly, fixing connectivity issues with SMTP servers that use non-standard or self-signed certificates
-- Upgraded `nodemailer` from v6 to v7
+- [#3](https://github.com/estruyf/playwright-mail-reporter/issues/3): Added secure option and make username plus password optional. Thanks to [Peter Zemljic](https://github.com/pzemljic-git)
 
 ## [0.0.8]
 
